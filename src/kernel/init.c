@@ -55,7 +55,7 @@ void init_thread()
     keyboard_init(); // 初始化键盘
     time_init();     // 初始化时间
     tty_init();      // 初始化 TTY 设备，必须在键盘之后
-    // rtc_init();   // 初始化实时时钟，目前没用
+    rtc_init();      // 初始化实时时钟
 
     ramdisk_init(); // 初始化内存虚拟磁盘
 
