@@ -8,6 +8,8 @@
 #define MIN(a, b) (a < b ? a : b)
 #define ABS(a) (a < 0 ? -a : a)
 
+#define ALIGN(d, a) (((d) + (a - 1)) & ~(a - 1))
+
 void delay(u32 count);
 void hang();
 
