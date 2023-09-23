@@ -104,6 +104,9 @@ extern int sys_resolv();
 
 extern int sys_uname();
 
+extern void sys_pc_shutdown();
+extern void sys_pc_reboot();
+
 void syscall_init()
 {
     for (size_t i = 0; i < SYSCALL_SIZE; i++)
@@ -195,6 +198,9 @@ void syscall_init()
     syscall_table[SYS_NR_RECVFROM] = sys_recvfrom;
     syscall_table[SYS_NR_RECVMSG] = sys_recvmsg;
     syscall_table[SYS_NR_SHUTDOWN] = sys_shutdown;
+
+    syscall_table[SYS_NR_PC_REBOOT] = sys_pc_reboot;
+    syscall_table[SYS_NR_PC_SHUTDOWN] = sys_pc_shutdown;
 
     syscall_table[SYS_NR_RESOLV] = sys_resolv;
 

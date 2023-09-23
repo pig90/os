@@ -56,6 +56,7 @@ typedef enum syscall_t
     SYS_NR_SIGACTION = 67,
     SYS_NR_SGETMASK = 68,
     SYS_NR_SSETMASK = 69,
+    SYS_NR_PC_REBOOT = 88,
     SYS_NR_READDIR = 89,
     SYS_NR_MMAP = 90,
     SYS_NR_MUNMAP = 91,
@@ -78,6 +79,7 @@ typedef enum syscall_t
     SYS_NR_RECVMSG,
     SYS_NR_SHUTDOWN,
     SYS_NR_RESOLV,
+    SYS_NR_PC_SHUTDOWN,
 
     SYS_NR_MKFS = SYSCALL_SIZE - 1,
 } syscall_t;

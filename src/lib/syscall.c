@@ -415,3 +415,13 @@ int uname(void *buf)
 {
     return _syscall1(SYS_NR_UNAME, (u32)buf);
 }
+
+void pc_shutdown()
+{
+    _syscall0(SYS_NR_PC_SHUTDOWN);
+}
+
+void pc_reboot()
+{
+    _syscall0(SYS_NR_PC_REBOOT);
+}

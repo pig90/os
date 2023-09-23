@@ -13,7 +13,7 @@ CFLAGS+= -fno-pic				# 不需要位置无关的代码  position independent code
 CFLAGS+= -fno-pie				# 不需要位置无关的可执行程序 position independent executable
 CFLAGS+= -nostdlib				# 不需要标准库
 CFLAGS+= -fno-stack-protector	# 不需要栈保护
-CFLAGS+= -Werror
+# CFLAGS+= -Werror
 CFLAGS+= -DONIX					# 定义 ONIX
 CFLAGS+= -DONIX_DEBUG			# 定义 ONIX_DEBUG
 CFLAGS+= -DONIX_VERSION='"$(ONIX_VERSION)"' # 定义 ONIX_VERSION
@@ -138,6 +138,7 @@ $(BUILD)/kernel.bin: \
 	$(BUILD)/kernel/fpu.o \
 	$(BUILD)/kernel/test.o \
 	$(BUILD)/kernel/e1000.o \
+	$(BUILD)/kernel/acpi.o \
 	$(BUILD)/net/pbuf.o \
 	$(BUILD)/net/chksum.o \
 	$(BUILD)/net/netif.o \

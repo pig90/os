@@ -2,6 +2,7 @@
 #define ONIX_STDLIB_H
 
 #include <onix/types.h>
+#include <onix/acpi.h>
 
 #define MAX(a, b) (a < b ? b : a)
 #define MIN(a, b) (a < b ? a : b)
@@ -21,5 +22,8 @@ u32 div_round_up(u32 num, u32 size);
 bool isdigit(int c);
 
 int atoi(const char *str);
+
+void pc_reboot();
+void pc_shutdown();
 
 #endif

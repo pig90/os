@@ -1,10 +1,10 @@
 # Onix - 操作系统实现
 
-![](./docs/others/images/snapshot.png)
-
-- [参考文献](./docs/others/参考文献.md)
-
 ## 使用方法
+
+对于 `qemu` 模拟器，需要提前配置 `tap0` 设备，用于网络：
+
+    qemu-system-i386  -m 32M -audiodev pa,id=snd -machine pcspk-audiodev=snd -device sb16,audiodev=snd -rtc base=localtime -chardev stdio,mux=on,id=com1 -serial chardev:com1 -netdev tap,id=eth0,ifname=tap0,script=no,downscript=no -device e1000,netdev=eth0 -drive file=onix_1.0.0.iso,media=cdrom,if=ide -boot d
 
 iso 文件的使用参考 [版本 1.0.0](./docs/13%20系统优化/179%20版本%201.0.0.md)；
 
@@ -32,7 +32,7 @@ iso 文件的使用参考 [版本 1.0.0](./docs/13%20系统优化/179%20版本%2
     - [x] ATAPI 光盘驱动
     - [ ] PS/2 鼠标 (🌱 panda)
     - [ ] VESA 图形驱动 (🌱 panda)
-    - [ ] ACPI：控制关机和重启 (🌱 acpi)
+    - [x] ACPI：控制关机和重启 (🌱 acpi)
     - [ ] RTL8139 网卡驱动
     - [ ] USB
 - 内存管理：
@@ -67,10 +67,6 @@ iso 文件的使用参考 [版本 1.0.0](./docs/13%20系统优化/179%20版本%2
 - 开发环境：
     - [x] WSL2 
     - [ ] docker (🌱 docker)
-
-对于 `qemu` 模拟器，需要提前配置 `tap0` 设备，用于网络：
-
-    qemu-system-i386  -m 32M -audiodev pa,id=snd -machine pcspk-audiodev=snd -device sb16,audiodev=snd -rtc base=localtime -chardev stdio,mux=on,id=com1 -serial chardev:com1 -netdev tap,id=eth0,ifname=tap0,script=no,downscript=no -device e1000,netdev=eth0 -drive file=onix_1.0.0.iso,media=cdrom,if=ide -boot d
 
 ## Pull Request 约定
 

@@ -103,6 +103,11 @@ static err_t buffer_alloc(bdesc_t *desc)
         buf->count = 0;
         buf->dirty = false;
         buf->valid = false;
+
+        // 重启后，内存数据没有清零
+        buf->hnode.next = buf->hnode.prev = NULL;
+        buf->rnode.next = buf->rnode.prev = NULL;
+
         lock_init(&buf->lock);
 
         list_push(&desc->free_list, &buf->rnode);
@@ -172,6 +177,8 @@ buffer_t *bread(dev_t dev, idx_t block, size_t size)
     buffer_t *buf = getblk(desc, dev, block);
 
     assert(buf != NULL);
+    assert(!buf->rnode.next && !buf->rnode.prev);
+
     if (buf->valid)
     {
         return buf;
