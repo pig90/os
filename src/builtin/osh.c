@@ -65,7 +65,7 @@ void print_prompt()
         *ptr = 0;
     }
     char *base = basename(cwd);
-    printf("\033[30;45m[root %s]\033[0m# ", base);
+    printf("\033[30;32m[root@onix \033[30;33m%s\033[30;32m]\033[0m# ", base);
 }
 
 void clear()
