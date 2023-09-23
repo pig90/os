@@ -1,4 +1,3 @@
-
 #include <onix/stdio.h>
 #include <onix/syscall.h>
 #include <onix/string.h>
@@ -66,7 +65,7 @@ void print_prompt()
         *ptr = 0;
     }
     char *base = basename(cwd);
-    printf("\033[30;32m[root@onix \033[33m%s\033[32m]\033[0m# ", base);
+    printf("\033[30;45m[root %s]\033[0m# ", base);
 }
 
 void clear()
@@ -454,14 +453,6 @@ static void execute(int argc, char *argv[])
     if (!strcmp(line, "mkfs"))
     {
         return builtin_mkfs(argc, argv);
-    }
-    if (!strcmp(line, "shutdown"))
-    {
-        return shutdown_pc();
-    }
-    if (!strcmp(line, "reboot"))
-    {
-        return reboot();
     }
     return builtin_exec(argc, argv);
 }

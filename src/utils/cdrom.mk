@@ -24,11 +24,6 @@ $(BUILD)/kernel.iso : \
 	cp $(BUILD)/mono.wav $(BUILD)/iso/data
 	cp $(BUILD)/stereo.wav $(BUILD)/iso/data
 
-	cp images/bingbing.bmp $(BUILD)/iso/data
-	cp images/mouse.bmp $(BUILD)/iso/data
-	cp images/palette.act $(BUILD)/iso/data
-	cp images/taklimakan.bmp $(BUILD)/iso/data
-
 # 拷贝 grub 配置文件
 	cp $(SRC)/utils/grub.cfg $(BUILD)/iso/boot/grub
 # 生成 iso 文件

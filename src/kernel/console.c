@@ -666,11 +666,6 @@ int console_write(console_t *con, char *buf, u32 count)
     return nr;
 }
 
-void console_reset()
-{
-    console_clear(&console);
-}
-
 void console_init()
 {
     console_t *con = &console;

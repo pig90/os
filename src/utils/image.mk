@@ -1,5 +1,5 @@
-LOOP:= $(shell sudo losetup -f)
 MUSIC:= ./utils/deer.mp3
+LOOP := $(shell sudo losetup --find)
 
 $(BUILD)/mono.wav: $(MUSIC)
 	ffmpeg -i $< -ac 1 -ar 44100 -acodec pcm_u8 -y $@
@@ -9,7 +9,6 @@ $(BUILD)/stereo.wav: $(MUSIC)
 
 $(BUILD)/master.img: $(BUILD)/boot/boot.bin \
 	$(BUILD)/boot/loader.bin \
-	$(BUILD)/boot/vm86.bin \
 	$(BUILD)/system.bin \
 	$(BUILD)/system.map \
 	$(SRC)/utils/master.sfdisk \
@@ -71,16 +70,6 @@ $(BUILD)/master.img: $(BUILD)/boot/boot.bin \
 	done
 
 	echo "hello onix!!!" > /mnt/hello.txt
-
-# 拷贝 vm8086 程序
-	# 测试 vm86.bin 容量，小于一页
-	test -n "$$(find $(BUILD)/boot/vm86.bin -size -4k)"
-	cp $(BUILD)/boot/vm86.bin /mnt/bin
-
-# 拷贝图像文件
-	cp ./utils/images/bingbing.bmp /mnt/data
-	cp ./utils/images/taklimakan.bmp /mnt/data
-	cp ./utils/images/mouse.bmp /mnt/data
 
 # 卸载文件系统
 	sudo umount /mnt

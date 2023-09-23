@@ -383,11 +383,13 @@ void keyboard_handler(int vector)
         ch = keymap[makecode][shift];
     }
 
-    // 通知 tty 设备处理输入字符
-    if (tty_rx_notify(&ch, makecode, ctrl_state, shift_state, alt_state) > 0)
+    if (ch == INV)
         return;
 
-    if (ch == INV)
+    // LOGK("keydown %c \n", ch);
+
+    // 通知 tty 设备处理输入字符
+    if (tty_rx_notify(&ch, ctrl_state, shift_state, alt_state) > 0)
         return;
 
     fifo_put(&fifo, ch);

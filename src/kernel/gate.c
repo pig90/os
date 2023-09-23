@@ -82,9 +82,6 @@ extern int sys_alarm();
 
 extern int sys_mkfs();
 
-extern void sys_shutdown_pc();
-extern void sys_reboot();
-
 extern int sys_socket();
 extern int sys_listen();
 extern int sys_accept();
@@ -106,8 +103,6 @@ extern int sys_sendmsg();
 extern int sys_resolv();
 
 extern int sys_uname();
-
-extern int sys_vm86();
 
 void syscall_init()
 {
@@ -204,9 +199,4 @@ void syscall_init()
     syscall_table[SYS_NR_RESOLV] = sys_resolv;
 
     syscall_table[SYS_NR_UNAME] = sys_uname;
-
-    syscall_table[SYS_NR_VM86] = sys_vm86;
-
-    syscall_table[SYS_NR_SHUTDOWN_PC] = sys_shutdown_pc;
-    syscall_table[SYS_NR_REBOOT] = sys_reboot;
 }

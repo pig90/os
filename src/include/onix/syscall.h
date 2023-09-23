@@ -56,11 +56,9 @@ typedef enum syscall_t
     SYS_NR_SIGACTION = 67,
     SYS_NR_SGETMASK = 68,
     SYS_NR_SSETMASK = 69,
-    SYS_NR_REBOOT = 88,
     SYS_NR_READDIR = 89,
     SYS_NR_MMAP = 90,
     SYS_NR_MUNMAP = 91,
-    SYS_NR_VM86 = 113,
     SYS_NR_YIELD = 158,
     SYS_NR_SLEEP = 162,
     SYS_NR_GETCWD = 183,
@@ -80,7 +78,6 @@ typedef enum syscall_t
     SYS_NR_RECVMSG,
     SYS_NR_SHUTDOWN,
     SYS_NR_RESOLV,
-    SYS_NR_SHUTDOWN_PC,
 
     SYS_NR_MKFS = SYSCALL_SIZE - 1,
 } syscall_t;
@@ -228,10 +225,5 @@ int sendmsg(int fd, msghdr_t *msg, u32 flags);
 int resolv(const char *name, ip_addr_t addr);
 
 int uname(void *buf);
-
-int vm86(int vec, void *reg);
-
-void shutdown_pc();
-void reboot();
 
 #endif

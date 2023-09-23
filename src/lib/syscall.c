@@ -415,18 +415,3 @@ int uname(void *buf)
 {
     return _syscall1(SYS_NR_UNAME, (u32)buf);
 }
-
-int vm86(int vec, void *reg)
-{
-    return _syscall2(SYS_NR_VM86, vec, (u32)reg);
-}
-
-void shutdown_pc()
-{
-    _syscall0(SYS_NR_SHUTDOWN_PC);
-}
-
-void reboot()
-{
-    _syscall0(SYS_NR_REBOOT);
-}

@@ -1,4 +1,3 @@
-
 #include <onix/stdarg.h>
 #include <onix/stdio.h>
 #include <onix/syscall.h>

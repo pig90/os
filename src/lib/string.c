@@ -133,21 +133,9 @@ void *memset(void *dest, int ch, size_t count)
 void *memcpy(void *dest, const void *src, size_t count)
 {
     char *ptr = dest;
-    if (dest <= src)
+    while (count--)
     {
-        while (count--)
-        {
-            *ptr++ = *((char *)(src++));
-        }
-    }
-    else
-    {
-        ptr += count;
-        src += count;
-        while (count--)
-        {
-            *(--ptr) = *((char *)(--src));
-        }
+        *ptr++ = *((char *)(src++));
     }
     return dest;
 }

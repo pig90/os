@@ -1,7 +1,7 @@
 BUILD:=../build
 SRC:=.
 
-ONIX_VERSION:=1.1.0
+ONIX_VERSION:=1.0.0
 MULTIBOOT2:=0x18000
 ENTRYPOINT:=$(shell python -c "print(f'0x{$(MULTIBOOT2) + 0x8000:x}')")
 
@@ -13,7 +13,7 @@ CFLAGS+= -fno-pic				# 不需要位置无关的代码  position independent code
 CFLAGS+= -fno-pie				# 不需要位置无关的可执行程序 position independent executable
 CFLAGS+= -nostdlib				# 不需要标准库
 CFLAGS+= -fno-stack-protector	# 不需要栈保护
-# CFLAGS+= -Werror
+CFLAGS+= -Werror
 CFLAGS+= -DONIX					# 定义 ONIX
 CFLAGS+= -DONIX_DEBUG			# 定义 ONIX_DEBUG
 CFLAGS+= -DONIX_VERSION='"$(ONIX_VERSION)"' # 定义 ONIX_VERSION
@@ -77,7 +77,6 @@ BUILTIN_APPS := \
 	$(BUILD)/builtin/ping.out \
 	$(BUILD)/builtin/httpd.out \
 	$(BUILD)/builtin/uname.out \
-	$(BUILD)/builtin/ln.out \
 	$(BUILD)/builtin/tcp_server.out \
 	$(BUILD)/builtin/tcp_client.out \
 	$(BUILD)/builtin/tcp_nagle.out \
@@ -124,16 +123,12 @@ $(BUILD)/kernel.bin: \
 	$(BUILD)/kernel/serial.o \
 	$(BUILD)/kernel/pci.o \
 	$(BUILD)/kernel/memory.o \
-	$(BUILD)/kernel/acpi.o \
 	$(BUILD)/kernel/arena.o \
 	$(BUILD)/kernel/keyboard.o \
 	$(BUILD)/kernel/tty.o \
 	$(BUILD)/kernel/isa.o \
 	$(BUILD)/kernel/sb16.o \
 	$(BUILD)/kernel/floppy.o \
-	$(BUILD)/kernel/mouse.o \
-	$(BUILD)/kernel/vga.o \
-	$(BUILD)/kernel/vesa.o \
 	$(BUILD)/kernel/buffer.o \
 	$(BUILD)/kernel/system.o \
 	$(BUILD)/kernel/execve.o \
@@ -143,7 +138,6 @@ $(BUILD)/kernel.bin: \
 	$(BUILD)/kernel/fpu.o \
 	$(BUILD)/kernel/test.o \
 	$(BUILD)/kernel/e1000.o \
-	$(BUILD)/kernel/vm86.o \
 	$(BUILD)/net/pbuf.o \
 	$(BUILD)/net/chksum.o \
 	$(BUILD)/net/netif.o \
