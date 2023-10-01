@@ -53,6 +53,7 @@ $(BUILD)/lib/libc.o: $(BUILD)/lib/crt.o \
 	$(BUILD)/lib/strerror.o \
 	$(BUILD)/net/addr.o \
 	$(BUILD)/net/chksum.o \
+	$(BUILD)/lib/skiplist.o \
 
 	ld -m elf_i386 -r $^ -o $@
 
@@ -81,6 +82,8 @@ BUILTIN_APPS := \
 	$(BUILD)/builtin/tcp_client.out \
 	$(BUILD)/builtin/tcp_nagle.out \
 	$(BUILD)/builtin/tcp_surge.out \
+	$(BUILD)/builtin/skiplist.out \
+	$(BUILD)/builtin/random.out \
 
 $(BUILD)/builtin/%.out: $(BUILD)/builtin/%.o \
 	$(BUILD)/lib/libc.o \

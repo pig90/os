@@ -25,7 +25,11 @@ bool isdigit(int c);
 
 int atoi(const char *str);
 
-void pc_reboot();
-void pc_shutdown();
+void srand(u32 seed);
+
+u32 rand();
+
+// void pc_reboot();
+// void pc_shutdown();
 
 #endif

@@ -23,7 +23,6 @@
 #define VENDORID 0x8086 // 供应商英特尔
 
 // 8254x 兼容网卡
-// https://www.pcilookup.com/?ven=%098086&dev=&action=submit
 #define DEVICEID_LOW 0x1000
 #define DEVICEID_HIGH 0x1028
 
